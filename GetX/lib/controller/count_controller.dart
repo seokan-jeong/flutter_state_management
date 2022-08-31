@@ -14,6 +14,11 @@ import 'package:get/get.dart';
 // 반응형 상태 관리
 // 내부 로직으로 값의 상태 변화를 감지하고 화면에 변경된 값을 적용함
 class CountController extends GetxController{
+  // static get to
+  // GetX로 상태를 관리하다보면, Get.find 사용하여 상태 값에 자주 접근하게 됨
+  // 그래서 GetX에서는 static을 이용하는 패턴을 자주 사용함
+  static CountController get to => Get.find<CountController>();
+
   // life cycle - init
   @override
   void onInit() {

@@ -39,13 +39,16 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(CountController());
+    // final controller = Get.put(CountController());
     /*
     Get.find
     Get.find를 사용하면 Get.put으로 등록한 컨트롤러를 어디에서든 접근하여 사용할 수 있음(자식 위젯에서도 사용 가능)
     중요한 점은 Get.put을 사용하여 먼저 컨트롤러를 등록한 후 사용해야 함
     만약 등록이 되지 않은 컨트롤러에 접근한다면 에러 발생함
     */
+
+    // static get to
+    Get.put(CountController());
 
     // 단순 상태 관리
     // return Scaffold(
@@ -83,7 +86,8 @@ class MyHomePage extends StatelessWidget {
             Obx(
                 () => Text(
                   // '${controller.count.value}',
-                  '${Get.find<CountController>().count.value}', // Get.find
+                  // '${Get.find<CountController>().count.value}', // Get.find
+                  '${CountController.to.count.value}',  // static get to
                   style: Theme.of(context).textTheme.headline4,
                 )
             )
@@ -92,7 +96,8 @@ class MyHomePage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         // onPressed: controller.increment,
-        onPressed: Get.find<CountController>().increment, // Get.find
+        // onPressed: Get.find<CountController>().increment, // Get.find
+        onPressed: CountController.to.increment,  // static get to
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ),
