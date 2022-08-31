@@ -41,6 +41,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(CountController());
 
+    // 단순 상태 관리
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
