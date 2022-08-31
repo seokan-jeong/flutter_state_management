@@ -42,6 +42,29 @@ class MyHomePage extends StatelessWidget {
     final controller = Get.put(CountController());
 
     // 단순 상태 관리
+    // return Scaffold(
+    //   appBar: AppBar(
+    //     title: Text(title),
+    //   ),
+    //   body: Center(
+    //     child: Column(
+    //       mainAxisAlignment: MainAxisAlignment.center,
+    //       children: [
+    //         Text('You have pushed the button this many times'),
+    //         GetBuilder<CountController>(builder: (controller){
+    //           return Text('${controller.count}', style: Theme.of(context).textTheme.headline4,);
+    //         }),
+    //       ],
+    //     ),
+    //   ),
+    //   floatingActionButton: FloatingActionButton(
+    //     onPressed: controller.increment,
+    //     tooltip: 'Increment',
+    //     child: Icon(Icons.add),
+    //   ),
+    // );
+
+    // 반응형 상태 관리
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
@@ -51,9 +74,12 @@ class MyHomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('You have pushed the button this many times'),
-            GetBuilder<CountController>(builder: (controller){
-              return Text('${controller.count}', style: Theme.of(context).textTheme.headline4,);
-            }),
+            Obx(
+                () => Text(
+                  '${controller.count.value}',
+                  style: Theme.of(context).textTheme.headline4,
+                )
+            )
           ],
         ),
       ),
