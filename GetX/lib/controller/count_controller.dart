@@ -18,6 +18,13 @@ class CountController extends GetxController{
   @override
   void onInit() {
     super.onInit();
+    // Worker
+    // 반응형 상태 값의 변화가 발생하였을 때, 이를 감지하고 특정 콜백 함수를 호출할 수 있도록 해줌
+    // Worker는 컨트롤러 혹은 클래스가 생성될 때만 사용할 수 있음(onInit, initState 안에서 정의해야함)
+    ever(count, (_) => print('called every update')); // 반응형 상태값이 변경될 때마다 호출됨
+    once(count, (_) => print('called once')); // 반응형 상태값이 최초로 변경될 때 한 번만 호출됨
+    debounce(count, (_) => print('called after 1 second after last change'), time: const Duration(seconds: 1)); // 마지막 변경 이후 특정 시간동안 변경이 없으면 호출됨
+    interval(count, (_)=> print('called every second during the value is changed'), time: const Duration(seconds: 1));  // 반응형 상태값이 변경되는 동안, 일정 간격으로 호출됨
   }
 
   // life cycle - init
