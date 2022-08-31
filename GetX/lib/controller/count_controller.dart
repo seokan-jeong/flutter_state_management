@@ -36,6 +36,10 @@ class CountController extends GetxController{
   final count = 0.obs;
 
   void increment(){
+    // Get.isRegistered
+    // 사용하고자 하는 컨트롤러가 등록되어 있는지 확인할 수 있음
+    print(Get.isRegistered<CountController>());
+
     // 두가지 방법
     count.value++;
     // count(count.value + 1);
