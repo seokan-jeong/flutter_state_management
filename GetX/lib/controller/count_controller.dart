@@ -14,6 +14,18 @@ import 'package:get/get.dart';
 // 반응형 상태 관리
 // 내부 로직으로 값의 상태 변화를 감지하고 화면에 변경된 값을 적용함
 class CountController extends GetxController{
+  // life cycle - init
+  @override
+  void onInit() {
+    super.onInit();
+  }
+
+  // life cycle - init
+  @override
+  void onClose() {
+    super.onClose();
+  }
+
   final count = 0.obs;
 
   void increment(){
